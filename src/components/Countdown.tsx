@@ -39,7 +39,7 @@ export const CountdownTimer = ({ targetDate }: { targetDate: number}) => {
   );
 };
 
-export const SaveTheDate = ({ eventName, date }: { eventName: string, date: number }) => {
+export const SaveTheDate = ({ eventName, date, link }: { eventName: string, date: number, link: string }) => {
   const dateObj = new Date(date);
   const formattedDate = dateObj.toLocaleDateString("en-US", {
     weekday: "long",
@@ -71,9 +71,13 @@ export const SaveTheDate = ({ eventName, date }: { eventName: string, date: numb
         {/* <p className="text-lg text-gray-600">{eventName}</p> */}
         <p className="text-xl font-semibold mb-5">{formattedDate}</p>
         <CountdownTimer targetDate={date} />
-        <button className="mt-4 ring-1 ring-[#915282] px-6 py-2 mx-auto rounded-2xl hover:bg-[#915282] w-fit hover:text-white transition">
+        <a
+        className="mt-4 ring-1 ring-[#915282] px-6 py-2 mx-auto rounded-2xl hover:bg-[#915282] w-fit hover:text-white transition"
+        href={link}
+        target="_blank"
+        rel="noopener noreferrer">
           Add to Calendar
-        </button>
+        </a>
       </div>
     </div>
   );
