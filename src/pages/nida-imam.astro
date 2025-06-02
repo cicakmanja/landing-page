@@ -1,9 +1,6 @@
 ---
-import bgImage from "../assets/bg.jpg";
-import bgSound from "../assets/bg.mp3";
 import GuestName from "../components/GuestName";
-import { CountdownTimer, SaveTheDate } from "../components/Countdown";
-import SoundPlayer from "../components/SoundPlayer";
+import { SaveTheDate } from "../components/Countdown";
 import "../styles/tailwind.css";
 ---
 
@@ -19,10 +16,10 @@ import "../styles/tailwind.css";
       src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"
     ></script>
   </head>
-  <body>
+  <body class="overflow-hidden">
     <section
       id="cover"
-      class="relative h-screen w-full text-center text-white animate-[fade-in_1s_ease] overflow-hidden"
+      class="fixed inset-0 h-screen w-full text-center text-white overflow-hidden z-10"
     >
       <div
         class="absolute inset-0 bg-[url(/bg.jpg)] bg-fixed bg-cover bg-center -z-0"
@@ -48,9 +45,10 @@ import "../styles/tailwind.css";
             acara pernikahan kami.
           </p>
           <div class="mt-5">
-            <a
-              class="relative flex justify-center items-center w-[40px] h-[40px] rounded-full border-1 p-2 animate-bounce"
-              href="#frontpage"
+            <button
+              id="actionButton"
+              type="button"
+              class="relative flex justify-center items-center w-[40px] h-[40px] rounded-full border-1 p-2"
             >
               <svg
                 fill="currentColor"
@@ -78,55 +76,104 @@ import "../styles/tailwind.css";
                   </g>
                 </g>
               </svg>
-            </a>
+            </button>
           </div>
         </div>
       </div>
     </section>
 
     <section
-      id="frontpage"
-      class="relative w-full text-center text-white animate-[fade-in_1s_ease] overflow-hidden"
+      id="bride-groom"
+      class="relative w-full text-center animate-[fade-in_1s_ease] overflow-hidden opacity-0"
     >
-      <!-- https://images.unsplash.com/photo-1613469663063-0874723c644e?q=80&w=1870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D -->
       <div
-        class="absolute inset-0 z-0 bg-[url(/bg.jpg)] bg-cover bg-center bg-fixed"
+        class="absolute inset-0 bg-[url(/bg-2.webp)] bg-fixed bg-cover bg-center -z-0"
       >
       </div>
-      <div class="relative w-full py-[20rem] bg-[#00000088]">
+
+      <div
+        class="relative w-full text-[#915282] flex flex-col justify-around items-center text-center py-15"
+      >
         <div
-          class="relative max-w-xl flex flex-col justify-around items-center mx-auto h-full px-5"
+          class="max-w-2xl inline-flex flex-col justify-around items-center rounded-4xl p-5"
         >
-          <!-- <div class="w-full text-white z-1">
-            <div class="mb-[5rem]">
-              <p class="">Pernikahan</p>
-              <p class="">Nida & Imam</p>
-            </div>
-
-            <div class="w-full flex flex-row justify-between items-center">
-              <div>
-                <p class="">14</p>
-                <p class="">JUNI</p>
-                <p class="">2025</p>
-              </div>
-              <div>
-                <p class="">GEGESIK</p>
-                <p class="">CIREBON</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="empty"></div> -->
-          <div>
-            <p class="font-light italic">
-              “Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan
-              untukmu isteri-isteri dari jenismu sendiri, supaya kamu cenderung
-              dan merasa tenteram kepadanya, dan dijadikan-Nya diantaramu rasa
-              kasih dan sayang. Sesungguhnya pada yang demikian itu benar-benar
-              terdapat tanda-tanda bagi kaum yang berfikir.”
+          <div
+            class="mb-10 flex flex-col items-center gap-3"
+            data-aos="fade-up"
+            data-aos-duration="100"
+            data-aos-delay="200"
+          >
+            <!-- <p class="text-2xl">Pasangan</p>
+            <p class="text-4xl">Mempelai</p> -->
+            <p>
+              Dengan segala puji bagi Allah yang telah menciptakan makhluk-Nya
+              berpasang-pasangan, Ya Allah izinkanlah kami merangkaikan cinta
+              yang Engkau berikan dalam ikatan pernikahan.
             </p>
-            <p class="font-bold">(QS. Ar-Rum: 21)</p>
           </div>
+          <div class="w-full self-start text-start">
+            <div class="h-56 w-56 rounded-lg relative overflow-clip mb-5">
+              <div
+                class="absolute inset-0 bg-[url(/bride.jpeg)] bg-position-[315px_-120px] bg-size-[413px]"
+              >
+              </div>
+            </div>
+
+            <p class="text-3xl font-semibold tracking-wider mb-5">
+              Umrotun Nida, S.Pd., M.Hum.
+            </p>
+            <div>
+              <p class="text-lg font-semibold mb-3">Putri Kedua dari</p>
+              <p>Bapak Sobirin &</p>
+              <p>Ibu Ia Ropiah</p>
+            </div>
+
+            <div class="my-10 text-lg tracking-widest text-center">Dengan</div>
+
+            <div class="self-end text-end flex flex-col">
+              <div
+                class="h-56 w-56 rounded-lg relative overflow-clip self-end mb-5"
+              >
+                <div
+                  class="absolute inset-0 bg-[url(/broom.jpeg)] bg-position-[350px_-28px] bg-size-[413px]"
+                >
+                </div>
+              </div>
+              <p class="text-3xl font-semibold tracking-wider mb-5">
+                Imam Ade Surya, S.Kom.
+              </p>
+              <div>
+                <p class="text-lg font-semibold mb-3">Putra Pertama dari</p>
+                <p>Bapak Suryadi &</p>
+                <p>Ibu Wakingah</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="save-the-date"
+      class="relative h-screen w-full text-center text-white overflow-hidden"
+    >
+      <div
+        class="absolute inset-0 bg-[url(/bg.jpg)] bg-fixed bg-cover bg-center -z-0"
+      >
+      </div>
+
+      <div
+        class="relative w-full h-screen text-center bg-[#00000088] text-[#915282] flex justify-center items-center"
+      >
+        <div
+          class="max-w-2xl inline-flex flex-col justify-around items-center rounded-4xl p-5"
+        >
+          <SaveTheDate
+            link="https://calendar.google.com/calendar/u/0/r/eventedit?text=Pernikahan+Nida+%26+Imam&dates=20250614T020000Z/20250614T100000Z&details=Undangan+Pernikahan+Umrotun+Nida+%26+Imam+Ade+Surya+yang+Insya+Allah+akan+diselenggarakan+pada+Sabtu,+14+Juni+2025&location=https://maps.app.goo.gl/UzzpUTd4ZhAEuGWv6"
+            eventName="Wedding"
+            date={new Date("2025-06-14T09:00:00").valueOf()}
+            client:only
+          />
         </div>
       </div>
     </section>
@@ -145,6 +192,7 @@ import "../styles/tailwind.css";
       >
         <div
           class="bg-white border-1 rounded-xl max-w-xl inline-flex flex-col justify-around gap-15 items-center p-10"
+          data-aos="fade-up"
         >
           <div class="flex flex-col animate-[fade-in_1s_ease]">
             <p class="text-2xl uppercase font-semibold mb-5">Akad Nikah</p>
@@ -182,173 +230,182 @@ import "../styles/tailwind.css";
     </section>
 
     <section
-      id="save-the-date"
-      class="relative h-screen w-full text-center text-white overflow-hidden"
+      id="frontpage"
+      class="relative w-full text-center text-white animate-[fade-in_1s_ease] overflow-hidden"
     >
       <div
-        class="absolute inset-0 bg-[url(/bg.jpg)] bg-fixed bg-cover bg-center -z-0"
+        class="absolute inset-0 z-0 bg-[url(/bg.jpg)] bg-cover bg-center bg-fixed"
       >
       </div>
-
-      <div
-        class="relative w-full h-screen text-center bg-[#00000088] text-[#915282] flex justify-center items-center"
-      >
+      <div class="relative w-full py-[10rem] bg-[#00000088]">
         <div
-          class="max-w-2xl inline-flex flex-col justify-around items-center rounded-4xl p-5"
+          class="relative max-w-xl flex flex-col justify-around items-center mx-auto h-full px-5"
+          data-aos="fade-up"
         >
-          <SaveTheDate
-            link="https://calendar.google.com/calendar/u/0/r/eventedit?text=Pernikahan+Nida+%26+Imam&dates=20250614T020000Z/20250614T100000Z&details=Undangan+Pernikahan+Umrotun+Nida+%26+Imam+Ade+Surya+yang+Insya+Allah+akan+diselenggarakan+pada+Sabtu,+14+Juni+2025&location=https://maps.app.goo.gl/UzzpUTd4ZhAEuGWv6"
-            eventName="Wedding"
-            date={new Date("2025-06-14T09:00:00").valueOf()}
-            client:only
-          />
+          <div>
+            <p class="font-light italic">
+              “Di antara tanda-tanda (kebesaran)-Nya ialah bahwa Dia menciptakan
+              pasangan-pasangan untukmu dari (jenis) dirimu sendiri agar kamu
+              merasa tenteram kepadanya. Dia menjadikan di antaramu rasa cinta
+              dan kasih sayang. Sesungguhnya pada yang demikian itu benar-benar
+              terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir.”
+            </p>
+            <p class="font-bold">(QS. Ar-Rum: 21)</p>
+          </div>
         </div>
       </div>
     </section>
 
     <section
-      id="bride-groom"
-      class="relative w-full text-center animate-[fade-in_1s_ease] overflow-hidden"
+      id="thank"
+      class="relative h-screen w-full text-center text-white overflow-hidden"
     >
       <div
-        class="absolute inset-0 bg-[url(/bg-2.webp)] bg-fixed bg-cover bg-center -z-0"
+        class="absolute inset-0 bg-[url(/bg.jpg)] bg-fixed bg-cover bg-center"
       >
       </div>
 
       <div
-        class="relative w-full text-[#915282] flex flex-col justify-around items-center text-center py-15"
+        class="relative w-full h-screen bg-[#00000088] flex flex-col justify-around items-center text-center px-5"
       >
-        <div
-          class="max-w-xl inline-flex flex-col justify-around items-center rounded-4xl p-5"
-        >
-          <div class="self-start text-start">
-            <div class="h-56 w-56 rounded-lg relative overflow-clip mb-5">
-              <div
-                class="absolute inset-0 bg-[url(/bg-1.jpg)] bg-position-[3440px_832px]"
-              >
-              </div>
-            </div>
-            <p class="text-3xl font-semibold tracking-wider mb-5">
-              Umrotun Nida, S.Pd., M.Hum.
-            </p>
-            <div>
-              <p class="text-lg font-semibold mb-3">Putri Kedua dari</p>
-              <p>Bapak Sobirin &</p>
-              <p>Ibu Ia Ropiah</p>
-            </div>
-
-            <div class="my-10 text-lg tracking-widest text-center">Dengan</div>
-
-            <div class="self-end text-end flex flex-col">
-              <div
-                class="h-56 w-56 rounded-lg relative overflow-clip self-end mb-5"
-              >
-                <div
-                  class="absolute inset-0 bg-[url(/bg-1.jpg)] bg-position-[4905px_1024px]"
-                >
-                </div>
-              </div>
-              <p class="text-3xl font-semibold tracking-wider mb-5">
-                Imam Ade Surya, S.Kom.
-              </p>
-              <div>
-                <p class="text-lg font-semibold mb-3">Putra Pertama dari</p>
-                <p>Bapak Suryadi &</p>
-                <p>Ibu Wakingah</p>
-              </div>
-            </div>
-          </div>
+        <div class="max-w-lg" data-aos="fade-up">
+          <p class="text-3xl mb-5 tracking-wide">Terima Kasih</p>
+          <p class="text-md leading-relaxed mb-10">
+            Merupakan suatu kebahagiaan dan kehormatan bagi kami, apabila
+            Bapak/Ibu/Saudara/i berkenan hadir di hari bahagia kami.
+          </p>
+          <p class="text-lg font-semibold tracking-widest">Nida & Imam</p>
         </div>
       </div>
-
-      <section
-        id="thank"
-        class="relative h-screen w-full text-center text-white overflow-hidden"
-      >
-        <div
-          class="absolute inset-0 bg-[url(/bg.jpg)] bg-fixed bg-cover bg-center"
-        >
-        </div>
-
-        <div
-          class="relative w-full h-screen bg-[#00000088] flex flex-col justify-around items-center text-center px-5"
-        >
-          <div class="max-w-lg">
-            <p class="text-3xl mb-5 tracking-wide">Terima Kasih</p>
-            <p class="text-md leading-relaxed mb-10">
-              Merupakan suatu kebahagiaan dan kehormatan bagi kami, apabila
-              Bapak/Ibu/Saudara/i berkenan hadir di hari bahagia kami.
-            </p>
-            <p class="text-lg font-semibold tracking-widest">Nida & Imam</p>
-          </div>
-        </div>
-      </section>
-
-      <SoundPlayer client:only />
-
-      <!-- <div class="floating fixed right-4 bottom-4 flex flex-col gap-2">
-          <button class="rounded-full h-15 w-15 overflow-clip flex justify-center items-center bg-white text-[#915282] hover:bg-[#915282] hover:text-white" id="toggle-sound" type="button" onclick="toggleSound()">
-            play
-          </button>
-          <button id="init-sound" type="button"></button>
-        </div> -->
-
-      <!-- <script type="text/javascript">
-          var bgSound;
-          var isPlaying = false;
-          var isInitialized = false;
-
-          // Howler.autoUnlock = false;
-
-          document.addEventListener("DOMContentLoaded", function () {
-            // Play audio once user clicks anywhere (required by autoplay policy)
-            const toggleBtn = document.querySelector("#init-sound");
-            toggleBtn.addEventListener(
-              "click",
-              function () {
-                if (!isInitialized) {
-                  bgSound = new Howl({
-                    src: ["/bg.mp3"],
-                    autoplay: true,
-                    loop: true,
-                    volume: 1.0,
-                    onplay: function () {
-                      isPlaying = true;
-                      isInitialized = true;
-                    },
-                    onend: function () {
-                      console.log("Audio finished.");
-                    },
-                    onloaderror: function (_, err) {
-                      console.error("Audio failed to load:", err);
-                    },
-                    onplayerror: function (_, err) {
-                      console.error("Audio play failed:", err);
-                    },
-                  });
-                }
-              },
-              { once: true }
-            );
-
-            setTimeout(() => {
-              toggleBtn.click();
-            }, 1000);
-          });
-
-          function toggleSound() {
-            if (!bgSound || !isInitialized) return;
-
-            if (isPlaying) {
-              bgSound.pause();
-              isPlaying = false;
-            } else {
-              bgSound.play();
-              isPlaying = true;
-            }
-          }
-        </script> -->
     </section>
+
+    <div class="fixed bottom-10 right-5 z-50">
+      <button
+        id="toggle-sound"
+        class="flex items-center p-4 bg-white text-black rounded-full focus:outline-none opacity-0"
+      >
+      </button>
+    </div>
+
+    <!-- <SoundPlayer isPlaying={isPlaying} onInit={onInitSound} onToggle={onToggleSound} client:only /> -->
+
+    <script type="module" src="/src/scripts/aos-init.js"></script>
+    <script type="text/javascript">
+      var bgSound;
+      var isPlaying = false;
+      var isInitialized = false;
+
+      // Howler.autoUnlock = false;
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const button = document.getElementById("actionButton");
+        const coverSection = document.getElementById("cover");
+        const brideGroomSection = document.getElementById("bride-groom");
+        const toggleButton = document.getElementById("toggle-sound");
+
+        button?.addEventListener("click", () => {
+          console.log("Button clicked, hiding frontpage section");
+
+          window.scrollTo({ top: 0 });
+
+          if (document.body.classList.contains("overflow-hidden")) {
+            document.body.classList.remove("overflow-hidden");
+          }
+
+          if (!coverSection.classList.contains("hidden")) {
+            coverSection.classList.add("opacity-0");
+            coverSection.classList.add("hidden");
+            // coverSection.classList.add("hidden");
+            // Wait for the fade-out transition to finish
+            // coverSection.addEventListener(
+            //   "transitionend",
+            //   () => {
+            //     coverSection.classList.add("hidden");
+            //   },
+            //   { once: false }
+            // );
+          }
+
+          if (brideGroomSection.classList.contains("opacity-0")) {
+            brideGroomSection.classList.remove("opacity-0");
+            brideGroomSection.classList.add("opacity-100");
+            // brideGroomSection.classList.remove("hidden");
+          }
+
+          if (toggleButton.classList.contains("opacity-0")) {
+            toggleButton.classList.remove("opacity-0");
+          }
+
+          if (!isInitialized) {
+            bgSound = new Howl({
+              src: ["/bg.mp3"],
+              autoplay: true,
+              loop: true,
+              volume: 1.0,
+              onplay: function () {
+                isPlaying = true;
+                isInitialized = true;
+                changeButtonIcon();
+              },
+              onend: function () {
+                console.log("Audio finished.");
+              },
+              onloaderror: function (_, err) {
+                console.error("Audio failed to load:", err);
+              },
+              onplayerror: function (_, err) {
+                console.error("Audio play failed:", err);
+              },
+            });
+          }
+        });
+
+        // Play audio once user clicks anywhere (required by autoplay policy)
+        const toggleBtn = document.querySelector("#toggle-sound");
+        toggleBtn.addEventListener("click", toggleSound);
+
+        setTimeout(() => {
+          toggleBtn.click();
+        }, 1000);
+      });
+
+      function toggleSound() {
+        if (!bgSound || !isInitialized) return;
+
+        if (isPlaying) {
+          bgSound.pause();
+          isPlaying = false;
+        } else {
+          bgSound.play();
+          isPlaying = true;
+        }
+
+        changeButtonIcon();
+      }
+
+      function changeButtonIcon() {
+        const button = document.getElementById("toggle-sound");
+        if (isPlaying) {
+          button.innerHTML = `            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-5 h-5"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
+            </svg>`;
+        } else {
+          button.innerHTML = `<svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-5 h-5"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path d="M8 5v14l11-7L8 5z" />
+            </svg>`;
+        }
+      }
+    </script>
   </body>
 
   <style>
