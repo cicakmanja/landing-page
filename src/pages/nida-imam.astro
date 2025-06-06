@@ -25,15 +25,15 @@ import "../styles/tailwind.css";
   <body class="font-[Alice]">
     <section
       id="cover"
-      class="h-screen w-full text-center text-white overflow-hidden z-10 font-[Alice]"
+      class="fixed inset-0 min-h-screen w-full text-center text-white z-10 font-[Alice]"
     >
       <div
-        class="absolute inset-0 bg-[url(/bg.jpg)] bg-fixed bg-cover bg-center -z-0"
+        class="absolute inset-0 bg-[url(/bg.jpg)] bg-fixed bg-cover bg-center"
       >
       </div>
 
       <div
-        class="relative w-full h-full bg-[#00000088] flex flex-col justify-around items-center text-center py-15"
+        class="relative w-full h-screen bg-[#00000088] flex flex-col justify-around items-center text-center py-15"
       >
         <div class="flex flex-col gap-4 uppercase animate-[fade-in_1s_ease]">
           <p class="text-xl tracking-widest">Pernikahan</p>
@@ -112,29 +112,29 @@ import "../styles/tailwind.css";
           >
             <!-- <p class="text-2xl">Pasangan</p>
             <p class="text-4xl">Mempelai</p> -->
-            <p class="text-xl">
+            <p class="text-md md:text-xl">
               Dengan segala puji bagi Allah yang telah menciptakan makhluk-Nya
               berpasang-pasangan, Ya Allah izinkanlah kami merangkaikan cinta
               yang Engkau berikan dalam ikatan pernikahan.
             </p>
           </div>
           <div class="w-full self-start text-start">
-            <div class="flex justify-evenly items-center gap-5">
+            <div class="flex flex-row justify-evenly items-center gap-5">
               <div
-                class="h-64 w-48 rounded-t-full relative overflow-clip border shrink-0"
+                class="h-28 w-24 md:h-64 md:w-48 rounded-t-full relative overflow-clip border shrink-0"
               >
                 <div
-                  class="absolute inset-0 bg-[url(/bride.jpeg)] bg-position-[310px_-120px] bg-size-[413px]"
+                  class="absolute inset-0 bg-[url(/bride.jpeg)] bg-position-[155px_-70px] md:bg-position-[310px_-120px] bg-size-[210px] md:bg-size-[413px]"
                 >
                 </div>
               </div>
               <div class="text-center">
                 <p
-                  class="text-2xl font-bold tracking-wider pb-2 mb-2 font-[Alice] border-b-2 border-b-current"
+                  class="text-md lg:text-2xl font-bold tracking-wider pb-2 mb-2 font-[Alice] border-b-2 border-b-current"
                 >
                   Umrotun Nida, S.Pd., M.Hum.
                 </p>
-                <div class="text-2xl">
+                <div class="text-md md:text-2xl">
                   <p>Putri Kedua dari</p>
                   <p>Bapak Sobirin & Ibu Ia Ropiah</p>
                 </div>
@@ -142,29 +142,29 @@ import "../styles/tailwind.css";
             </div>
 
             <div
-              class="my-10 text-xl tracking-widest text-center font-[Quintessential]"
+              class="my-10 text-md md:text-xl tracking-widest text-center font-[Quintessential]"
             >
               Dengan
             </div>
 
             <div class="self-end text-end flex flex-col">
-              <div class="flex justify-evenly items-center gap-5">
+              <div class="flex flex-row justify-evenly items-center gap-5">
                 <div
-                  class="h-64 w-48 rounded-t-full relative overflow-clip border shrink-0 order-1"
+                  class="h-28 w-24 md:h-64 md:w-48 rounded-t-full relative overflow-clip border shrink-0 order-1"
                 >
                   <div
-                    class="absolute inset-0 bg-[url(/broom.jpeg)] bg-position-[336px_-10px] bg-size-[413px]"
+                    class="absolute inset-0 bg-[url(/broom.jpeg)] bg-position-[380px_-10px] bg-size-[210px] md:bg-position-[336px_-10px] md:bg-size-[413px]"
                   >
                   </div>
                 </div>
                 <div class="text-center">
                   <p
-                    class="text-2xl font-bold tracking-wider pb-2 mb-2 font-[Alice] border-b-2 border-b-current"
+                    class="text-md lg:text-2xl font-bold tracking-wider pb-2 mb-2 font-[Alice] border-b-2 border-b-current"
                   >
                     Imam Ade Surya, S.Kom.
                   </p>
                   <div class="text-center">
-                    <div class="text-2xl">
+                    <div class="text-md md:text-2xl">
                       <p>Putra Pertama dari</p>
                       <p>Bapak Suryadi & Ibu Wakingah</p>
                     </div>
@@ -186,7 +186,7 @@ import "../styles/tailwind.css";
 
     <section
       id="save-the-date"
-      class="relative h-screen w-full text-center text-white overflow-hidden"
+      class="relative h-screen w-full text-center text-white"
     >
       <div
         class="absolute inset-0 bg-[url(/bg.jpg)] bg-fixed bg-cover bg-center -z-0"
@@ -209,17 +209,14 @@ import "../styles/tailwind.css";
       </div>
     </section>
 
-    <section
-      id="events"
-      class="relative h-screen w-full text-center text-white overflow-hidden"
-    >
+    <section id="events" class="relative w-full text-center text-white">
       <div
         class="absolute inset-0 bg-[url(/bg-2.webp)] bg-fixed bg-cover bg-center"
       >
       </div>
 
       <div
-        class="relative w-full h-screen text-center text-[#915282] flex justify-center items-center py-15 px-5"
+        class="relative w-full text-center text-[#915282] flex justify-center items-center py-15 px-5"
       >
         <div
           class="relative bg-white border-1 rounded-xl max-w-xl inline-flex flex-col justify-around gap-15 items-center p-10"
@@ -365,12 +362,13 @@ import "../styles/tailwind.css";
       var isInitialized = false;
       const button = document.getElementById("actionButton");
       const toggleButton = document.getElementById("toggle-sound");
+      const coverSection = document.getElementById("cover");
       let hasScrolled = false;
       // Howler.autoUnlock = false;
 
       document.addEventListener("DOMContentLoaded", function () {
         if (location.hash) {
-          location.hash = '';
+          location.hash = "";
           window.scrollTo(0, 0);
           document.body.classList.add("overflow-y-hidden");
         }
@@ -384,13 +382,16 @@ import "../styles/tailwind.css";
 
         // Play audio once user clicks anywhere (required by autoplay policy)
         toggleButton.addEventListener("click", toggleSound);
-
-
       });
 
       function init() {
         if (document.body.classList.contains("overflow-y-hidden")) {
           document.body.classList.remove("overflow-y-hidden");
+        }
+
+        if (coverSection.classList.contains("fixed")) {
+          coverSection.classList.remove("fixed");
+          coverSection.classList.add("relative");
         }
 
         if (toggleButton.classList.contains("opacity-0")) {
