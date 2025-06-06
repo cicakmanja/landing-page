@@ -18,9 +18,7 @@ import "../styles/tailwind.css";
       href="https://fonts.googleapis.com/css2?family=Alice&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Quintessential&display=swap"
       rel="stylesheet"
     />
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"
-    ></script>
+  
   </head>
   <body class="font-[Alice]">
     <section
@@ -35,16 +33,29 @@ import "../styles/tailwind.css";
       <div
         class="relative w-full h-screen bg-[#00000088] flex flex-col justify-around items-center text-center py-15"
       >
-        <div class="flex flex-col gap-4 uppercase animate-[fade-in_1s_ease]">
+        <div
+          class="flex flex-col gap-4 uppercase"
+          data-aos="fade-up"
+          data-aos-anchor-placement="center-bottom"
+        >
           <p class="text-xl tracking-widest">Pernikahan</p>
-          <p class="text-4xl font-bold tracking-widest font-[Alice]">
+          <p
+            class="text-4xl
+            font-bold
+            tracking-widest
+            font-[Alice]"
+          >
             Nida & Imam
           </p>
           <p class="text-xl tracking-widest">14 JUNI 2025</p>
         </div>
 
         <div class="h-[10%]"></div>
-        <div class="text-center max-w-md flex flex-col items-center gap-4">
+        <div
+          class="text-center max-w-md flex flex-col items-center gap-4"
+          data-aos="fade-up"
+          data-aos-anchor-placement="center-bottom"
+        >
           <p>Yth. Bapak/Ibu/Saudara/i</p>
           <GuestName client:only />
           <p>
@@ -55,7 +66,7 @@ import "../styles/tailwind.css";
             <button
               id="actionButton"
               type="button"
-              class="relative flex justify-center items-center w-[56px] h-[56px] rounded-full border-1 p-2 animate-bounce"
+              class="relative flex justify-center items-center w-[56px] h-[56px] rounded-full border-1 p-2 animate__animated animate__bounce animate__slow animate__infinite"
             >
               <svg
                 fill="currentColor"
@@ -91,7 +102,7 @@ import "../styles/tailwind.css";
 
     <section
       id="bride-groom"
-      class="relative w-full text-center animate-[fade-in_1s_ease] overflow-hidden font-[Alice]"
+      class="relative w-full text-center animate-[fade-in_1s_ease] overflow-hidden font-[Alice] hidden"
     >
       <div
         class="absolute inset-0 bg-[url(/bg-3.webp)] bg-fixed bg-cover bg-center -z-0 opacity-20"
@@ -104,15 +115,10 @@ import "../styles/tailwind.css";
         <div
           class="max-w-2xl inline-flex flex-col justify-around items-center rounded-4xl p-5"
         >
-          <div
-            class="mb-15 flex flex-col items-center gap-3"
-            data-aos="fade-up"
-            data-aos-duration="100"
-            data-aos-delay="200"
-          >
+          <div class="mb-15 flex flex-col items-center gap-3">
             <!-- <p class="text-2xl">Pasangan</p>
             <p class="text-4xl">Mempelai</p> -->
-            <p class="text-md md:text-xl">
+            <p class="text-md md:text-xl" data-aos="fade-up">
               Dengan segala puji bagi Allah yang telah menciptakan makhluk-Nya
               berpasang-pasangan,<br /> Ya Allah izinkanlah kami merangkaikan cinta
               yang Engkau berikan dalam ikatan pernikahan.
@@ -180,12 +186,16 @@ import "../styles/tailwind.css";
             </div>
           </div>
         </div>
-        <div class="w-full relative">
-          <img
+        <div class="w-full h-40 relative" data-aos="fade-up">
+          <div
+            class="absolute inset-0 bg-[url(/bg-bottom.webp)] bg-repeat-x bg-position-[0_0] bg-size-[448px]"
+          >
+          </div>
+          <!-- <img
             src="/bg-bottom.webp"
             alt="background bottom"
-            class="w-full object-contain"
-          />
+            class="w-full object-fill"
+          /> -->
         </div>
       </div>
     </section>
@@ -222,13 +232,15 @@ import "../styles/tailwind.css";
       </div>
 
       <div
-        class="relative w-full text-center text-[#915282] flex justify-center items-center py-15 px-5"
+        class="relative w-full text-center text-[#915282] flex justify-center items-center py-15 px-8 md:px-5"
       >
         <div
-          class="relative bg-white border-1 rounded-xl max-w-xl inline-flex flex-col justify-around gap-15 items-center p-10"
-          data-aos="fade-up"
+          class="relative bg-white border-1 rounded-xl w-full md:max-w-xl inline-flex flex-col justify-around gap-10 items-center p-10"
         >
-          <div class="flex flex-col animate-[fade-in_1s_ease]">
+          <div
+            class="flex flex-col animate-[fade-in_1s_ease] w-100"
+            data-aos="fade-up"
+          >
             <div
               class="relative mx-auto w-full h-30 flex justify-center items-center mb-3"
             >
@@ -257,7 +269,10 @@ import "../styles/tailwind.css";
             >
           </div>
 
-          <div class="flex flex-col animate-[fade-in_1s_ease]">
+          <div
+            class="flex flex-col animate-[fade-in_1s_ease] w-100 mb-10"
+            data-aos="fade-up"
+          >
             <div
               class="relative mx-auto w-full h-30 flex justify-center items-center mb-3"
             >
@@ -344,7 +359,7 @@ import "../styles/tailwind.css";
       >
         <div class="max-w-lg" data-aos="fade-up">
           <p class="text-3xl mb-5 tracking-wide">Terima Kasih</p>
-          <p class="text-lg leading-relaxed tracking-wide mb-10">
+          <p class="text-md leading-relaxed tracking-wide mb-10">
             Merupakan suatu kebahagiaan dan kehormatan bagi kami,<br /> apabila Bapak/Ibu/Saudara/i
             berkenan hadir di hari bahagia kami.
           </p>
@@ -362,13 +377,14 @@ import "../styles/tailwind.css";
     </div>
 
     <script type="module" src="/src/scripts/aos-init.js"></script>
-    <script type="text/javascript">
-      var bgSound;
-      var isPlaying = false;
-      var isInitialized = false;
+    <script>
+      let bgSound: any;
+      let isPlaying = false;
+      let isInitialized = false;
       const button = document.getElementById("actionButton");
       const toggleButton = document.getElementById("toggle-sound");
       const coverSection = document.getElementById("cover");
+      const brideGroomSection = document.getElementById("bride-groom");
       let hasScrolled = false;
 
       document.addEventListener("DOMContentLoaded", function () {
@@ -384,7 +400,7 @@ import "../styles/tailwind.css";
           location.href = "#bride-groom";
         });
 
-        toggleButton.addEventListener("click", toggleSound);
+        toggleButton?.addEventListener("click", toggleSound);
 
         // Scroll listener to trigger init once
         window.addEventListener("scroll", function onScroll() {
@@ -407,12 +423,15 @@ import "../styles/tailwind.css";
             changeButtonIcon();
           }
         } else {
-          bgSound.play().then(() => {
-            isPlaying = true;
-            changeButtonIcon();
-          }).catch(err => {
-            console.error("Failed to resume audio:", err);
-          });
+          bgSound
+            .play()
+            .then(() => {
+              isPlaying = true;
+              changeButtonIcon();
+            })
+            .catch((err: any) => {
+              console.error("Failed to resume audio:", err);
+            });
         }
       });
 
@@ -421,12 +440,17 @@ import "../styles/tailwind.css";
           document.body.classList.remove("overflow-y-hidden");
         }
 
-        if (coverSection.classList.contains("fixed")) {
+        if (coverSection?.classList.contains("fixed")) {
           coverSection.classList.remove("fixed");
           coverSection.classList.add("relative");
         }
 
-        if (toggleButton.classList.contains("opacity-0")) {
+        if (brideGroomSection?.classList.contains("hidden")) {
+          brideGroomSection.classList.remove("hidden");
+          // AOS.refresh();
+        }
+
+        if (toggleButton?.classList.contains("opacity-0")) {
           toggleButton.classList.remove("opacity-0");
         }
 
@@ -446,11 +470,11 @@ import "../styles/tailwind.css";
             console.log("Audio finished.");
           });
 
-          bgSound.addEventListener("error", (err) => {
+          bgSound.addEventListener("error", (err: any) => {
             console.error("Audio failed to load or play:", err);
           });
 
-          bgSound.play().catch((err) => {
+          bgSound.play().catch((err: any) => {
             console.error("Audio play failed:", err);
           });
         }
@@ -463,7 +487,7 @@ import "../styles/tailwind.css";
           bgSound.pause();
           isPlaying = false;
         } else {
-          bgSound.play().catch((err) => {
+          bgSound.play().catch((err: any) => {
             console.error("Audio play failed:", err);
           });
           isPlaying = true;
@@ -475,188 +499,21 @@ import "../styles/tailwind.css";
       function changeButtonIcon() {
         const button = document.getElementById("toggle-sound");
         if (isPlaying) {
-          button.innerHTML = `
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
-            </svg>`;
+          (button as any).innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
+                </svg>`;
         } else {
-          button.innerHTML = `
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M8 5v14l11-7L8 5z" />
-            </svg>`;
+          (button as any).innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M8 5v14l11-7L8 5z" />
+                </svg>`;
         }
       }
     </script>
   </body>
 
   <style>
-    /* body {
-    background-color: #fff;
-    background-image: url("/public/bg.jpg");
-    background-position: center;
-    background-size: cover;
-    background-attachment: fixed;
-    color: #111;
-    font-size: 1.25rem;
-  }
-
-  #cover {
-    height: 100vh;
-    background-color: #00000088;
-    color: #fff;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    text-align: center;
-  }
-
-  #cover .cover-content {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-  }
-
-  #cover .cover-name {
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    opacity: 1;
-    animation: fade-in 100ms ease-in;
-  }
-
-  #cover .cover-author {
-    font-size: 2.5rem;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    animation: fade-in 300ms ease;
-  }
-
-  #cover .cover-date {
-    letter-spacing: 1px;
-    font-weight: 400;
-    animation: fade-in 400ms ease;
-  }
-
-  #cover .cover-cta {
-    color: #fff;
-    text-decoration: none;
-    border: 1px solid #fff;
-    border-radius: 50%;
-    padding: 1.25rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    animation:
-      bounce 2s ease infinite,
-      fade-in 600ms ease;
-  }
-
-  #cover .cover-cta:hover {
-    background-color: #fff;
-    border-color: #fff;
-    color: #000;
-    text-transform: uppercase;
-    transition: all 500ms;
-  } */
-
-    /* #bride-groom {
-    height: 100vh;
-    background-color: #3a0519;
-    color: #fff;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-  } */
-
-    /* #events {
-    height: 100vh;
-    background-color: #00000088;
-    margin: 0 auto;
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-  }
-
-  #events > div {
-    max-width: 450px;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-  }
-
-  #events .event {
-    background-color: #00000088;
-    padding: 2rem;
-    border-radius: 10px;
-    line-height: 1.5;
-  }
-
-  #events .event .event-name {
-    font-size: 1.5rem;
-    font-weight: 500;
-  }
-
-  #thank {
-    height: 100vh;
-    background-color: #3a0519;
-    margin: 0 auto;
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    text-align: center;
-  }
-
-  #thank > div {
-    max-width: 450px;
-  }
-
-  #thank > div p {
-    margin-bottom: 1.5rem;
-    font-size: 1.5rem;
-    line-height: 1.5;
-  }
-
-  #thank .title {
-    font-size: 2rem;
-  }
-
-  #thank .subtitle {
-    margin-bottom: 3rem;
-  }
-
-  #thank .author {
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-  }
-
-  .floating {
-    position: fixed;
-    right: 2rem;
-    bottom: 2rem;
-  }
-
-  .floating button {
-    padding: 1rem;
-    border: 0;
-    border-radius: 50%;
-  }
-
-  .floating #init-sound {
-    width: 0;
-    height: 0;
-    background: transparent;
-    padding: 0;
-    border: 0;
-  } */
-
     .bounce {
       animation: bounce 2s ease infinite;
     }
