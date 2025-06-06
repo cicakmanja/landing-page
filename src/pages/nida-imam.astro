@@ -48,7 +48,7 @@ import "../styles/tailwind.css";
           <p>Yth. Bapak/Ibu/Saudara/i</p>
           <GuestName client:only />
           <p>
-            Tanpa mengurangi rasa hormat,<br> kami mengundang anda untuk menghadiri
+            Tanpa mengurangi rasa hormat,<br /> kami mengundang anda untuk menghadiri
             acara pernikahan kami.
           </p>
           <div class="mt-5">
@@ -114,7 +114,7 @@ import "../styles/tailwind.css";
             <p class="text-4xl">Mempelai</p> -->
             <p class="text-md md:text-xl">
               Dengan segala puji bagi Allah yang telah menciptakan makhluk-Nya
-              berpasang-pasangan,<br> Ya Allah izinkanlah kami merangkaikan cinta
+              berpasang-pasangan,<br /> Ya Allah izinkanlah kami merangkaikan cinta
               yang Engkau berikan dalam ikatan pernikahan.
             </p>
           </div>
@@ -126,7 +126,7 @@ import "../styles/tailwind.css";
                 <div
                   class="absolute inset-0 bg-[url(/bride.jpeg)] bg-position-[125px_-45px] md:bg-position-[280px_-120px] bg-size-[150px] md:bg-size-[360px]"
                 >
-                <!-- <div
+                  <!-- <div
                   class="absolute inset-0 bg-[url(/bride.jpeg)] bg-position-[155px_-70px] md:bg-position-[310px_-120px] bg-size-[210px] md:bg-size-[413px]"
                 > -->
                 </div>
@@ -158,7 +158,7 @@ import "../styles/tailwind.css";
                   <div
                     class="absolute inset-0 bg-[url(/broom.jpeg)] bg-position-[435px_0px] bg-size-[150px] md:bg-position-[310px_-10px] md:bg-size-[360px]"
                   >
-                  <!-- <div
+                    <!-- <div
                     class="absolute inset-0 bg-[url(/broom.jpeg)] bg-position-[380px_-10px] bg-size-[210px] md:bg-position-[336px_-10px] md:bg-size-[413px]"
                   > -->
                   </div>
@@ -345,8 +345,8 @@ import "../styles/tailwind.css";
         <div class="max-w-lg" data-aos="fade-up">
           <p class="text-3xl mb-5 tracking-wide">Terima Kasih</p>
           <p class="text-lg leading-relaxed tracking-wide mb-10">
-            Merupakan suatu kebahagiaan dan kehormatan bagi kami,<br /> apabila
-            Bapak/Ibu/Saudara/i berkenan hadir di hari bahagia kami.
+            Merupakan suatu kebahagiaan dan kehormatan bagi kami,<br /> apabila Bapak/Ibu/Saudara/i
+            berkenan hadir di hari bahagia kami.
           </p>
           <p class="text-lg font-semibold tracking-widest">Nida & Imam</p>
         </div>
@@ -370,7 +370,6 @@ import "../styles/tailwind.css";
       const toggleButton = document.getElementById("toggle-sound");
       const coverSection = document.getElementById("cover");
       let hasScrolled = false;
-      // Howler.autoUnlock = false;
 
       document.addEventListener("DOMContentLoaded", function () {
         if (location.hash) {
@@ -382,12 +381,39 @@ import "../styles/tailwind.css";
         button?.addEventListener("click", () => {
           console.log("Button clicked, hiding frontpage section");
           init();
-
           location.href = "#bride-groom";
         });
 
-        // Play audio once user clicks anywhere (required by autoplay policy)
         toggleButton.addEventListener("click", toggleSound);
+
+        // Scroll listener to trigger init once
+        window.addEventListener("scroll", function onScroll() {
+          if (!hasScrolled && window.scrollY > 0) {
+            hasScrolled = true;
+            init();
+            window.removeEventListener("scroll", onScroll);
+          }
+        });
+      });
+
+      // Pause audio when user leaves the page (tab/window hidden)
+      document.addEventListener("visibilitychange", function () {
+        if (!bgSound || !isInitialized) return;
+
+        if (document.hidden) {
+          if (isPlaying) {
+            bgSound.pause();
+            isPlaying = false;
+            changeButtonIcon();
+          }
+        } else {
+          bgSound.play().then(() => {
+            isPlaying = true;
+            changeButtonIcon();
+          }).catch(err => {
+            console.error("Failed to resume audio:", err);
+          });
+        }
       });
 
       function init() {
@@ -405,26 +431,27 @@ import "../styles/tailwind.css";
         }
 
         if (!isInitialized) {
-          bgSound = new Howl({
-            src: ["/bg.mp3"],
-            autoplay: true,
-            loop: true,
-            volume: 1.0,
-            onplay: function () {
-              isPlaying = true;
-              isInitialized = true;
-              hasScrolled = true;
-              changeButtonIcon();
-            },
-            onend: function () {
-              console.log("Audio finished.");
-            },
-            onloaderror: function (_, err) {
-              console.error("Audio failed to load:", err);
-            },
-            onplayerror: function (_, err) {
-              console.error("Audio play failed:", err);
-            },
+          bgSound = new Audio("/bg.mp3");
+          bgSound.loop = true;
+          bgSound.volume = 1.0;
+
+          bgSound.addEventListener("play", () => {
+            isPlaying = true;
+            isInitialized = true;
+            hasScrolled = true;
+            changeButtonIcon();
+          });
+
+          bgSound.addEventListener("ended", () => {
+            console.log("Audio finished.");
+          });
+
+          bgSound.addEventListener("error", (err) => {
+            console.error("Audio failed to load or play:", err);
+          });
+
+          bgSound.play().catch((err) => {
+            console.error("Audio play failed:", err);
           });
         }
       }
@@ -436,7 +463,9 @@ import "../styles/tailwind.css";
           bgSound.pause();
           isPlaying = false;
         } else {
-          bgSound.play();
+          bgSound.play().catch((err) => {
+            console.error("Audio play failed:", err);
+          });
           isPlaying = true;
         }
 
@@ -446,21 +475,13 @@ import "../styles/tailwind.css";
       function changeButtonIcon() {
         const button = document.getElementById("toggle-sound");
         if (isPlaying) {
-          button.innerHTML = `            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="w-5 h-5"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-            >
+          button.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
               <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
             </svg>`;
         } else {
-          button.innerHTML = `<svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="w-5 h-5"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-            >
+          button.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
               <path d="M8 5v14l11-7L8 5z" />
             </svg>`;
         }
