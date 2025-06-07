@@ -23,7 +23,7 @@ export default function AtmCard({ name, accountNumber }: { name: string, account
 
 	return (
 		<div
-			className="relative w-[350px] h-[200px] aspect-auto bg-[url(/card.webp)] bg-cover bg-center bg-no-repeat mb-5 rounded-lg flex flex-col py-5 px-10 justify-between text-slate-800"
+			className="relative w-[320px] h-[180px] aspect-auto bg-[url(/card.webp)] bg-cover bg-center bg-no-repeat mb-5 rounded-lg flex flex-col py-5 px-10 justify-between text-slate-800"
 		>
 			<div
 				className="flex justify-end items-center absolute top-[10px] right-[10px]"

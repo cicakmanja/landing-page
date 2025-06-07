@@ -2,6 +2,7 @@
 import GuestName from "../components/GuestName";
 import { SaveTheDate } from "../components/Countdown";
 import AtmCard from "../components/AtmCard";
+import ConfirmForm from "../components/ConfirmForm";
 import "../styles/tailwind.css";
 ---
 
@@ -358,7 +359,7 @@ import "../styles/tailwind.css";
     >
       <div class="absolute inset-0 z-0 bg-pink-100 bg-cover bg-center bg-fixed">
       </div>
-      <div class="relative w-full py-[10rem] bg-[#00000088]">
+      <div class="relative w-full py-20 bg-[#00000066]">
         <div
           class="relative w-full md:max-w-3xl flex flex-col justify-around items-center mx-auto h-full px-5"
           data-aos="fade-up"
@@ -397,6 +398,9 @@ import "../styles/tailwind.css";
               name="Umrotun Nida"
               accountNumber="1030010559579"
             />
+          </div>
+          <div class="w-full md:max-w-xl">
+            <ConfirmForm client:only />
           </div>
         </div>
       </div>
