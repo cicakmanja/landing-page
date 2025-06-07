@@ -1,6 +1,7 @@
 ---
 import GuestName from "../components/GuestName";
 import { SaveTheDate } from "../components/Countdown";
+import AtmCard from "../components/AtmCard";
 import "../styles/tailwind.css";
 ---
 
@@ -18,7 +19,6 @@ import "../styles/tailwind.css";
       href="https://fonts.googleapis.com/css2?family=Alice&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Quintessential&display=swap"
       rel="stylesheet"
     />
-  
   </head>
   <body class="font-[Alice] overflow-x-hidden overflow-y-hidden">
     <section
@@ -125,7 +125,10 @@ import "../styles/tailwind.css";
             </p>
           </div>
           <div class="w-full self-start text-start">
-            <div class="flex flex-row justify-evenly items-center gap-5" data-aos="fade-up">
+            <div
+              class="flex flex-row justify-evenly items-center gap-5"
+              data-aos="fade-up"
+            >
               <div
                 class="h-28 w-24 md:h-64 md:w-48 rounded-t-full relative overflow-clip border shrink-0"
               >
@@ -152,13 +155,16 @@ import "../styles/tailwind.css";
 
             <div
               class="my-10 text-md md:text-xl tracking-widest text-center font-[Quintessential]"
-               data-aos="fade-up"
+              data-aos="fade-up"
             >
               Dengan
             </div>
 
             <div class="self-end text-end flex flex-col">
-              <div class="flex flex-row justify-evenly items-center gap-5" data-aos="fade-up">
+              <div
+                class="flex flex-row justify-evenly items-center gap-5"
+                data-aos="fade-up"
+              >
                 <div
                   class="h-28 w-24 md:h-64 md:w-48 rounded-t-full relative overflow-clip border shrink-0 order-1"
                 >
@@ -347,6 +353,56 @@ import "../styles/tailwind.css";
     </section>
 
     <section
+      id="anvelope"
+      class="relative w-full text-center text-white animate-[fade-in_1s_ease]"
+    >
+      <div class="absolute inset-0 z-0 bg-pink-100 bg-cover bg-center bg-fixed">
+      </div>
+      <div class="relative w-full py-[10rem] bg-[#00000088]">
+        <div
+          class="relative w-full md:max-w-3xl flex flex-col justify-around items-center mx-auto h-full px-5"
+          data-aos="fade-up"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-10"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M21 11.25v8.25a1.5 1.5 0 0 1-1.5 1.5H5.25a1.5 1.5 0 0 1-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 1 0 9.375 7.5H12m0-2.625V7.5m0-2.625A2.625 2.625 0 1 1 14.625 7.5H12m0 0V21m-8.625-9.75h18c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125h-18c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z"
+            ></path>
+          </svg>
+
+          <p class="text-center my-10">
+            Doa Restu Anda merupakan karunia yang sangat berarti bagi kami.<br
+            /> Namun jika memberi adalah ungkapan tanda kasih Anda,<br /> kami akan
+            senang hati menerimanya yang tentu akan semakin melengkapi<br /> kebahagiaan
+            kami.️
+          </p>
+          <div
+            class="w-full flex flex-col md:flex-row justify-center items-center gap-5"
+          >
+            <AtmCard
+              client:only
+              name="Imam Ade Surya"
+              accountNumber="1020007200162"
+            />
+            <AtmCard
+              client:only
+              name="Umrotun Nida"
+              accountNumber="1030010559579"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
       id="thank"
       class="relative h-screen w-full text-center text-white overflow-hidden"
     >
@@ -378,8 +434,8 @@ import "../styles/tailwind.css";
     </div>
 
     <script type="module" src="/src/scripts/aos-init.js"></script>
-    <script>
-      let bgSound: any;
+    <script type="module">
+      let bgSound;
       let isPlaying = false;
       let isInitialized = false;
       const button = document.getElementById("actionButton");
@@ -430,7 +486,7 @@ import "../styles/tailwind.css";
               isPlaying = true;
               changeButtonIcon();
             })
-            .catch((err: any) => {
+            .catch((err) => {
               console.error("Failed to resume audio:", err);
             });
         }
@@ -471,11 +527,11 @@ import "../styles/tailwind.css";
             console.log("Audio finished.");
           });
 
-          bgSound.addEventListener("error", (err: any) => {
+          bgSound.addEventListener("error", (err) => {
             console.error("Audio failed to load or play:", err);
           });
 
-          bgSound.play().catch((err: any) => {
+          bgSound.play().catch((err) => {
             console.error("Audio play failed:", err);
           });
         }
@@ -488,7 +544,7 @@ import "../styles/tailwind.css";
           bgSound.pause();
           isPlaying = false;
         } else {
-          bgSound.play().catch((err: any) => {
+          bgSound.play().catch((err) => {
             console.error("Audio play failed:", err);
           });
           isPlaying = true;
@@ -500,12 +556,12 @@ import "../styles/tailwind.css";
       function changeButtonIcon() {
         const button = document.getElementById("toggle-sound");
         if (isPlaying) {
-          (button as any).innerHTML = `
+          button.innerHTML = `
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
                 </svg>`;
         } else {
-          (button as any).innerHTML = `
+          button.innerHTML = `
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M8 5v14l11-7L8 5z" />
                 </svg>`;
