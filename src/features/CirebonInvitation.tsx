@@ -388,7 +388,7 @@ export default function CirebonInvitation() {
 								</p>
 							</div>
 							<p className="text-xl mb-2">14 Juni 2025</p>
-							<p className="text-xl mb-3">11:00 - 17:00 WIB</p>
+							<p className="text-xl mb-3">11:00 - Selesai</p>
 							<p className="text-md mb-5">
 								Blok VI Gegesik Kidul RT 03 RW 15<br /> Kecamatan Gegesik,<br /> Kabupaten
 								Cirebon, Jawa Barat
