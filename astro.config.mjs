@@ -7,10 +7,10 @@ import react from '@astrojs/react';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://nikahindong.site',
+  // site: 'https://nikahindong.site',
 
-  // site: 'https://cicakmanja.github.io',
-  // base: 'landing-page',
+  site: 'https://cicakmanja.github.io',
+  base: 'landing-page',
   vite: {
     plugins: [tailwindcss()]
   },
